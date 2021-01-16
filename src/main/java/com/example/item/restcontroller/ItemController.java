@@ -16,7 +16,8 @@ import com.example.item.service.ItemService;
 public class ItemController {
 	
 @Autowired
-@Qualifier("itemServiceFeing")
+//@Qualifier("itemServiceFeing")
+@Qualifier("serviceRestTemplate")
 private IItemService itemService;
 
 	@GetMapping("/listar")
