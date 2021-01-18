@@ -10,10 +10,10 @@ import com.example.item.models.Producto;
 
 @FeignClient(name ="servicio-productos")
 public interface IProductoClienteRest {
-	@GetMapping("/api/productos")
+	@GetMapping("/listar")
 	public List<Producto> findAll();
 	
-	@GetMapping("/api/productos/{id}")
+	@GetMapping("/detalle/{id}")
 	public Producto detalle(@PathVariable Long id);
 	
 

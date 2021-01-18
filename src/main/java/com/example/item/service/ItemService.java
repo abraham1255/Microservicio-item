@@ -23,7 +23,7 @@ public class ItemService implements IItemService{
 	@Override
 	public List<Item> findAll() {
 		List<Producto> productos = Arrays.asList(
-				registrarRestemplate.getForObject("http://servicio-productos/api/productos", Producto[].class)); 
+				registrarRestemplate.getForObject("http://servicio-productos/listar", Producto[].class)); 
 		return productos.stream().map(p-> new Item(p,1)).collect(Collectors.toList());
 	}
 
@@ -31,7 +31,7 @@ public class ItemService implements IItemService{
 	public Item findaById(Long id, Integer cantidad) {
 		Map<String,String> pathVariables = new HashMap<String,String>();
 		pathVariables.put("id", id.toString());
-		Producto producto = registrarRestemplate.getForObject("http://servicio-productos/api/productos/{id}",Producto.class, pathVariables); 
+		Producto producto = registrarRestemplate.getForObject("http://servicio-productos/detalle/{id}",Producto.class, pathVariables); 
 		return new Item(producto,cantidad);
 	}
 
