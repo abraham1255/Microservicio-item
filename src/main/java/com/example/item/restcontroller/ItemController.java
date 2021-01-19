@@ -14,8 +14,13 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.item.iservice.IItemService;
@@ -33,12 +38,13 @@ public class ItemController {
 	private String texto;
 	
 
-	@Autowired
+	/*@Autowired
 	private Environment env;
+	*/
 	
 	@Autowired
-	@Qualifier("itemServiceFeing")
-//@Qualifier("serviceRestTemplate")
+	@Qualifier("itemServiceFeign")
+	//@Qualifier("serviceRestTemplate")
 	private IItemService itemService;
 
 	@GetMapping("/listar")
@@ -73,6 +79,24 @@ public class ItemController {
 		producto.setPrecio(10000.00);
 		item.setProducto(producto);
 		return item;
+	}
+	
+	@PostMapping("/crear")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Producto crear(@RequestBody Producto producto) {
+		return itemService.save(producto);
+	}
+	
+	@PutMapping("/editar/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Producto editar(@RequestBody Producto producto, @PathVariable Long id) {
+		return itemService.update(producto, id);
+	}
+	
+	@DeleteMapping("/eliminar/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void eliminar(@PathVariable Long id) {
+		itemService.delete(id);
 	}
 
 }

@@ -12,22 +12,37 @@ import com.example.item.iservice.IItemService;
 import com.example.item.models.Item;
 import com.example.item.models.Producto;
 
-@Service("itemServiceFeing")
+@Service("itemServiceFeign")
 public class ItemServiceFeing implements IItemService {
 
 	@Autowired
-	private IProductoClienteRest clienteFeing;
+	private IProductoClienteRest clienteFeign;
 
 	@Override
 	public List<Item> findAll() {
 
-		return clienteFeing.findAll().stream().map(p -> new Item(p, 1)).collect(Collectors.toList());
+		return clienteFeign.findAll().stream().map(p -> new Item(p, 1)).collect(Collectors.toList());
 	}
 
 	@Override
 	public Item findaById(Long id, Integer cantidad) {
 
-		return new Item(clienteFeing.detalle(id), cantidad);
+		return new Item(clienteFeign.detalle(id), cantidad);
+	}
+
+	@Override
+	public Producto save(Producto producto) {
+		return clienteFeign.crear(producto);
+	}
+
+	@Override
+	public Producto update(Producto producto, Long id) {
+		return clienteFeign.update(producto, id);
+	}
+
+	@Override
+	public void delete(Long id) {
+		clienteFeign.eliminar(id);
 	}
 
 }
