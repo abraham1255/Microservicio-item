@@ -2,15 +2,12 @@ package com.example.item.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
 import com.example.item.cliente.IProductoClienteRest;
 import com.example.item.iservice.IItemService;
 import com.example.item.models.Item;
-import com.example.item.models.Producto;
+import com.example.commons.models.Producto;
 
 @Service("itemServiceFeign")
 public class ItemServiceFeing implements IItemService {

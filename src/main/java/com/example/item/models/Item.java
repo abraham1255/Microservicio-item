@@ -1,5 +1,7 @@
 package com.example.item.models;
 
+import com.example.commons.models.Producto;
+
 public class Item {
 	
 	private Producto producto;

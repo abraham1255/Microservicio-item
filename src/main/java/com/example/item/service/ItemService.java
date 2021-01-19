@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.item.iservice.IItemService;
 import com.example.item.models.Item;
-import com.example.item.models.Producto;
+import com.example.commons.models.Producto;
 
 @Service("serviceRestTemplate")
 public class ItemService implements IItemService{

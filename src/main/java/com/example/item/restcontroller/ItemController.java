@@ -1,6 +1,5 @@
 package com.example.item.restcontroller;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,8 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.item.iservice.IItemService;
 import com.example.item.models.Item;
-import com.example.item.models.Producto;
-import com.example.item.service.ItemService;
+import com.example.commons.models.Producto;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RefreshScope

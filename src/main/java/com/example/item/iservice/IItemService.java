@@ -2,10 +2,10 @@ package com.example.item.iservice;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import com.example.item.models.Item;
-import com.example.item.models.Producto;
+import com.example.commons.models.Producto;
 
 public interface IItemService {
 
