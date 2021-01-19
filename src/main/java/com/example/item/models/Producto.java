@@ -54,4 +54,11 @@ public class Producto {
 		this.createAt = createAt;
 	}
 
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", createAt=" + createAt + ", port="
+				+ port + "]";
+	}
+	
+
 }
